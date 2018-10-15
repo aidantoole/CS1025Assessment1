@@ -9,7 +9,7 @@
 	<div id="header">
 		<img src="zodiac_img.png" id="headerIMG">
 		<a href="/" class="menuItem">Home</a>
-		<a href="/create" class="menuItem">Create</a>
+<!-- 		<a href="/create" class="menuItem">Create</a> -->
 		<a href="/about" class="menuItem">About</a>
 		<a href="/edit" class="menuItem">Edit</a>
 
@@ -39,12 +39,11 @@
 
 	<div id="content">
 		<p>Welcome to WAD wiki. A free online encyclopedia of knowledge that can be viewed by anyone!</p>
-		<p>Feel free to search for anything you desire! And if it does not exist then create it!</p>
 		<p>Use the menu to the left to navigate the site!</p>
-		<div id="content" style="background-color:#EEEEEE;height:340px;width:500px;float:left;">
+		<div style="background-color:#EEEEEE;height:auto;width:auto;float:left;">
 		<%= @info %>
 		</div>
-		<div id="content" style="background-color:#EEEEEE;height:340px;width:500px;float:left;">
+		<div id="content" class="sidenav" >
 		Number of words: <%= @words %>
 		</div>
 	</div>
