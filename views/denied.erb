@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Access Denied</title>
+</head>
+<body>
+	<link rel="stylesheet" type="text/css" href="css/style.css" />
+	<!-- <link rel="stylesheet" type="text/css" href="/css/style.css"> -->
+	<div id="header">
+		<img src="zodiac_img.png" id="headerIMG">
+		<a href="/" class="menuItem">Home</a>
+		<a href="/create" class="menuItem">Create</a>
+		<a href="/about" class="menuItem">About</a>
+		<a href="/edit" class="menuItem">Edit</a>
+
+	<!-- 	<a href="/login">Login</a><br> -->
+		<% if $credentials %> 
+			<% if $credentials[0] != ' ' %>
+				Logged in as: 
+				<a href="/user/<%= $credentials[0] %>"><b style="color:black;">
+					<%= $credentials[0] %></b></a>
+				<a href="/logout" class="menuItem">Logout</a>
+
+				<% if $credentials[0] == "Admin" %>
+					<a href="/admincontrols" class="menuItem">Admin Controls</a>
+				<% end %> 
+
+				<% else %>
+					<a href="/login" class="menuItem">Login</a>
+				<% end %>
+			<% else %>
+				<a href="/login" class="menuItem">Login</a>
+			<% end %>
+	</div>
+
+	<div class="spacer">
+		&nbsp;
+	</div>
+
+	<h2>ACCESS DENIED</h2>
+	<p>Alert alert alert you are not allowed to authorize this page. Leave this area immediately.</p>
+	<p>Please log into an admin privileged account to edit, create, or delete wiki pages</p>
+
+</body>
+</html>

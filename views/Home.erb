@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Home</title>
+</head>
+<body>
+	<link rel="stylesheet" type="text/css" href="css/style.css" />
+	<!-- <link rel="stylesheet" type="text/css" href="/css/style.css"> -->
+	<div id="header">
+		<img src="zodiac_img.png" id="headerIMG">
+		<a href="/" class="menuItem">Home</a>
+		<a href="/create" class="menuItem">Create</a>
+		<a href="/about" class="menuItem">About</a>
+		<a href="/edit" class="menuItem">Edit</a>
+
+	<!-- 	<a href="/login">Login</a><br> -->
+		<% if $credentials %> 
+			<% if $credentials[0] != ' ' %>
+				Logged in as: 
+				<a href="/user/<%= $credentials[0] %>"><b style="color:black;">
+					<%= $credentials[0] %></b></a>
+				<a href="/logout" class="menuItem">Logout</a>
+
+				<% if $credentials[0] == "Admin" %>
+					<a href="/admincontrols" class="menuItem">Admin Controls</a>
+				<% end %> 
+
+				<% else %>
+					<a href="/login" class="menuItem">Login</a>
+				<% end %>
+			<% else %>
+				<a href="/login" class="menuItem">Login</a>
+			<% end %>
+	</div>
+
+	<div class="spacer">
+		&nbsp;
+	</div>
+
+	<div id="content">
+		<p>Welcome to WAD wiki. A free online encyclopedia of knowledge that can be viewed by anyone!</p>
+		<p>Feel free to search for anything you desire! And if it does not exist then create it!</p>
+		<p>Use the menu to the left to navigate the site!</p>
+		<div id="content" style="background-color:#EEEEEE;height:340px;width:500px;float:left;">
+		<%= @info %>
+		</div>
+		<div id="content" style="background-color:#EEEEEE;height:340px;width:500px;float:left;">
+		Number of words: <%= @words %>
+		</div>
+	</div>
+
+</body>
+</html>

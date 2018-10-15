@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Admin Controls YO</title>
+</head>
+<body>
+	<link rel="stylesheet" type="text/css" href="css/style.css" />
+	<!-- <link rel="stylesheet" type="text/css" href="/css/style.css"> -->
+	<div id="header">
+		<img src="zodiac_img.png" id="headerIMG">
+		<a href="/" class="menuItem">Home</a>
+		<a href="/create" class="menuItem">Create</a>
+		<a href="/about" class="menuItem">About</a>
+		<a href="/edit" class="menuItem">Edit</a>
+
+	<!-- 	<a href="/login">Login</a><br> -->
+		<% if $credentials %> 
+			<% if $credentials[0] != ' ' %>
+				Logged in as: 
+				<a href="/user/<%= $credentials[0] %>"><b style="color:black;">
+					<%= $credentials[0] %></b></a>
+				<a href="/logout" class="menuItem">Logout</a>
+
+				<% if $credentials[0] == "Admin" %>
+					<a href="/admincontrols" class="menuItem">Admin Controls</a>
+				<% end %> 
+
+				<% else %>
+					<a href="/login" class="menuItem">Login</a>
+				<% end %>
+			<% else %>
+				<a href="/login" class="menuItem">Login</a>
+			<% end %>
+	</div>
+
+	<div class="spacer">
+		&nbsp;
+	</div>
+
+	<h2>Admin Controls Page</h2>
+
+	<p>
+		<b>User List</b>
+	</p>
+
+	<p>Username - DateJoined - Edit?</p>
+
+	<% @list2.each do |liste| %>
+
+	<article>
+		<p>
+			<%= liste.username %> - <%= liste.date_joined %> - <%= liste.edit %>
+			<form action="/user/<%= liste.username %>" method="post" id="edit">
+				<input type="hidden" name="_method" value="put">
+				<input type="checkbox" name="edit" <%= "checked" if liste.edit %>>
+				<input type="submit" value="Allow Edit?">
+			</form> 
+			<a href="/user/delete/<%= liste.username %>">Delete User?</a>
+		</p> 
+	</article>
+	
+	<% end %>
+
+</body>
+</html>
