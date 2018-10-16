@@ -83,3 +83,12 @@ body {
 	position: relative;
 	margin: auto;
 }
+
+#login_form{
+	margin: 0 auto;
+	margin-top: 10%;
+	text-align: center;
+	border-style: groove;
+	width: 30%;
+	height: 300px;
+}
