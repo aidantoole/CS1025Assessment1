@@ -74,12 +74,12 @@ get '/' do
 	readFile("wiki.txt")
 
 	@info = info + " " + $myinfo
-
+	
 	len = @info.length
 	len2 = len - 1
 	len3 = len2 - len1
-
-	@words = len3.to_s
+	@words = @info.split.size
+	@characters = len3.to_s
 
 	#This doesn't work though. Trying to figure out what the logic is for this stuff ^^^
 	# @info = @info + len3.to_s
