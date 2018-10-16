@@ -9,15 +9,13 @@
 	<div id="header">
 		<img src="zodiac_img.png" id="headerIMG">
 		<a href="/" class="menuItem">Home</a>
-<!-- 		<a href="/create" class="menuItem">Create</a> -->
 		<a href="/about" class="menuItem">About</a>
-	<!-- 	<a href="/login">Login</a><br> -->
 		<% if $credentials %> 
 			<% if $credentials[0] != ' ' %>
 				Logged in as: 
 				<a href="/user/<%= $credentials[0] %>"><b style="color:black;">
+				<%= $credentials[0] %></b></a>
 				<a href="/edit" class="menuItem">Edit</a>
-					<%= $credentials[0] %></b></a>
 				<a href="/logout" class="menuItem">Logout</a>
 
 				<% if $credentials[0] == "Admin" %>
@@ -27,9 +25,11 @@
 
 				<% else %>
 					<a href="/login" class="menuItem">Login</a>
+					<a href="/createaccount" class="menuItem">Sign in</a>
 				<% end %>
 			<% else %>
 				<a href="/login" class="menuItem">Login</a>
+				<a href="/createaccount" class="menuItem">Sign in</a>
 			<% end %>
 	</div>
 	<%i = 0%>

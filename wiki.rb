@@ -182,7 +182,7 @@ end
 
 #Admin
 get '/admincontrols' do
-	protected!
+	#protected!
 	#CAn't get this part to work, BUT it runs without protected!
 	@list2 = User.all :order => :id.desc
 	erb :admincontrols
