@@ -11,7 +11,7 @@
 		<a href="/" class="menuItem">Home</a>
 <!-- 		<a href="/create" class="menuItem">Create</a> -->
 		<a href="/about" class="menuItem">About</a>
-		<a href="/edit" class="menuItem">Edit</a>
+		
 
 	<!-- 	<a href="/login">Login</a><br> -->
 		<% if $credentials %> 
@@ -20,9 +20,10 @@
 				<a href="/user/<%= $credentials[0] %>"><b style="color:black;">
 					<%= $credentials[0] %></b></a>
 				<a href="/logout" class="menuItem">Logout</a>
-
+				<a href="/edit" class="menuItem">Edit</a>
 				<% if $credentials[0] == "Admin" %>
 					<a href="/admincontrols" class="menuItem">Admin Controls</a>
+					<a href="/edit" class="menuItem">Edit</a>
 				<% end %> 
 
 				<% else %>
