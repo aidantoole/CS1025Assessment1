@@ -7,7 +7,7 @@
 
 require 'sinatra'
 require 'sinatra/reloader'
-
+require 'fileutils'
 require 'data_mapper'
 
 DataMapper::setup(:default, "sqlite3://#{Dir.pwd}/wiki.db") 
@@ -25,6 +25,8 @@ DataMapper.finalize.auto_upgrade!
 
 $myinfo = "Aidan Toole"
 @info = ""
+
+FileUtils.cp("wiki.txt","wiki_copy.txt")
 
 def get_user_details()
 	@list2 = User.all :order => :id.desc
@@ -255,6 +257,10 @@ get '/denied' do
 	erb :denied
 end
 
+get '/reset' do
+	FileUtils.cp("wiki_initial.txt","wiki.txt")
+	redirect '/'
+end
 
 #404 Use case
 not_found do

@@ -23,7 +23,9 @@
 				<% if $credentials[0] == "Admin" %>
 					<a href="/admincontrols" class="menuItem">Admin Controls</a>
 				<% end %> 
-
+				<%if get_user_details.edit == true%>
+					<a href="/edit" class="menuItem">Edit</a>
+				<%end%>
 				<% else %>
 					<a href="/login" class="menuItem">Login</a>
 				<% end %>

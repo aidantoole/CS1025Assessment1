@@ -22,9 +22,10 @@
 
 				<% if $credentials[0] == "Admin" %>
 					<a href="/admincontrols" class="menuItem">Admin Controls</a>
-					<a href="/edit" class="menuItem">Edit</a>
 				<% end %> 
-
+				<%if get_user_details.edit == true%>
+					<a href="/edit" class="menuItem">Edit</a>
+				<%end%>
 				<% else %>
 					<a href="/login" class="menuItem">Login</a>
 				<% end %>
@@ -42,7 +43,7 @@
 		<b>User List</b>
 	</p>
 
-	<p>Username - DateJoined - Edit?</p>
+	<p>Username - DateJoined - Edit</p>
 
 	<% @list2.each do |liste| %>
 
@@ -52,9 +53,9 @@
 			<form action="/user/<%= liste.username %>" method="post" id="edit">
 				<input type="hidden" name="_method" value="put">
 				<input type="checkbox" name="edit" <%= "checked" if liste.edit %>>
-				<input type="submit" value="Allow Edit?">
+				<input type="submit" value="Allow Edit">
 			</form> 
-			<a href="/user/delete/<%= liste.username %>">Delete User?</a>
+			<a href="/user/delete/<%= liste.username %>">Delete User</a>
 		</p> 
 	</article>
 	

@@ -22,9 +22,10 @@
 				<a href="/logout" class="menuItem">Logout</a>
 				<% if $credentials[0] == "Admin" %>
 					<a href="/admincontrols" class="menuItem">Admin Controls</a>
-					<a href="/edit" class="menuItem">Edit</a>
 				<% end %> 
-
+				<%if get_user_details.edit == true%>
+					<a href="/edit" class="menuItem">Edit</a>
+				<%end%>
 				<% else %>
 					<a href="/login" class="menuItem">Login</a>
 					<a href="/createaccount" class="menuItem">Sign in</a>
