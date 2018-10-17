@@ -102,6 +102,16 @@ end
 
 #Edit Section
 get '/edit' do
+	@list2 = User.all :order => :id.desc
+	@list2.each do |liste|
+		if $credentials
+			if liste.username == $credentials[0]
+				if liste.edit ==  false
+					redirect 'denied'
+				end
+			end
+		end
+	end
 	info = ""
 	file = File.open("wiki.txt")
 	file.each do |line|
@@ -199,7 +209,7 @@ post '/createaccount' do
 	n.username = params[:username]
 	n.password = params[:password]
 	n.date_joined = Time.now 
-
+	n.edit = false
 	if n.username == "Admin" and n.password == "password"
 		n.edit = true
 	end
