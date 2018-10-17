@@ -137,6 +137,16 @@ get '/edit' do
 
 end
 
+#PUT EDIT
+put '/edit' do
+	info = "#{params[:message]}"
+	@info = info
+	file = File.open("wiki.txt", "w")
+	file.puts @info
+	file.close
+	redirect '/'
+end
+
 #Login
 get '/login' do
 	erb :login
@@ -237,15 +247,7 @@ get '/logout' do
 end
 
 
-#PUT EDIT
-put '/edit' do
-	info = "#{params[:message]}"
-	@info = info
-	file = File.open("wiki.txt", "w")
-	file.puts @info
-	file.close
-	redirect '/'
-end
+
 
 #Not Found
 get '/notfound' do
