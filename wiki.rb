@@ -185,7 +185,7 @@ get '/admincontrols' do
 	protected!
 	#CAn't get this part to work, BUT it runs without protected!
 	@list2 = User.all :order => :id.desc
-	erb :admincontrols
+	erb :adminControls
 end
 
 #Create Account
