@@ -32,20 +32,24 @@
 				<a href="/login" class="menuItem">Login</a>
 			<% end %>
 	</div>
-
-	<div class="spacer">
-		&nbsp;
-	</div>
-
-	<div id="content">
-		<p>Welcome to WAD wiki. A free online encyclopedia of knowledge that can be viewed by anyone!</p>
-		<div style="background-color:#EEEEEE;height:auto;width:auto;float:left;">
-		<%= @info %>
-		</div>
-		<div id="content" class="sidenav" >
-		Number of words: <%= @words %>
-		</div>
-	</div>
-
+	<%i = 0%>
+		<%loop do%>
+			<%i +=1%>
+			<br>
+			<%if i == 10%>
+			<%break%>
+			<%end%>
+		<%end%>
+	<div id="sidebar">
+		<%i = 0%>
+		<%loop do%>
+			<%i +=1%>
+			<br>
+			<%if i == 8%>
+			<%break%>
+			<%end%>
+		<%end%>
+		Number of characters:<%= @words %></div>
+	<div id="content"><%= @info %></div>
 </body>
 </html>
