@@ -9,15 +9,7 @@
 	<div id="header">
 		<img src="zodiac_img.png" id="headerIMG">
 		<a href="/" class="menuItem">Home</a>
-		<a href="/about" class="menuItem">About</a>
-		<% @list2 = User.all :order => :id.desc %>
-		<% @list2.each do |liste| %>
-				<%if $credentials%>
-					<%if liste.username == $credentials[0]%>
-						<% $usr = liste%>	
-					<%end%>	
-				<%end%>
-		<%end%>
+		<a href="/about" class="menuItem">About</a>	
 		<% if $credentials %> 
 			<% if $credentials[0] != ' ' %>
 				Logged in as: 
@@ -27,7 +19,7 @@
 				<% if $credentials[0] == "Admin" %>
 					<a href="/admincontrols" class="menuItem">Admin Controls</a>
 				<% end %> 
-				<%if $usr.edit == true%>
+				<%if get_user_details.edit == true%>
 				<a href="/edit" class="menuItem">Edit</a>
 				<%end%>
 				<% else %>

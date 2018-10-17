@@ -26,6 +26,16 @@ DataMapper.finalize.auto_upgrade!
 $myinfo = "Aidan Toole"
 @info = ""
 
+def get_user_details()
+	@list2 = User.all :order => :id.desc
+	@list2.each do |liste|
+		if $credentials
+			if liste.username == $credentials[0]
+				return liste				
+			end
+		end
+	end
+end
 def readFile(filename)
 	info = ""
 	file = File.open(filename)
