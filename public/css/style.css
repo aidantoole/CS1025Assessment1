@@ -60,34 +60,12 @@ body {
 	padding-left: 10px;
 }
 
-<<<<<<< HEAD
-/*.sidenav {
-    width: 130px;
-    position: fixed;
-    z-index: 1;
-    top: 20px;
-    left: 10px;
-    background: #eee;
-    overflow-x: hidden;
-    padding: 8px 0;
-}
-
-.sidenav a {
-    padding: 6px 8px 6px 16px;
-    text-decoration: none;
-    font-size: 25px;
-    color: #2196F3;
-    display: block;
-}*/
-
-/*George is working on Sidebar*/
 
 .zodiacContent{
 	padding-top: 10px;
 	padding-left: 100px;
 }
 
-=======
 
 #sidebar{
 	width: 20%;
@@ -111,7 +89,15 @@ body {
 	position: relative;
 	margin: auto;
 }
-<<<<<<< HEAD
+
+#admin_controls{
+	margin: 0 auto;
+	margin-top: 10%;
+	text-align: center;
+	border-style: groove;
+	width: 50%;
+	height: 500px;
+}
 
 #login_form{
 	margin: 0 auto;
@@ -121,5 +107,8 @@ body {
 	width: 35%;
 	height: 300px;
 }
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> a8eb4aa2dc95789927adfa3d6f2775eed529707e
 
