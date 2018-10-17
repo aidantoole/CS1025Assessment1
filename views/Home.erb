@@ -15,7 +15,6 @@
 				Logged in as: 
 				<a href="/user/<%= $credentials[0] %>"><b style="color:black;">
 				<%= $credentials[0] %></b></a>
-				<a href="/edit" class="menuItem">Edit</a>
 				<a href="/logout" class="menuItem">Logout</a>
 
 				<% if $credentials[0] == "Admin" %>
@@ -29,7 +28,7 @@
 				<% end %>
 			<% else %>
 				<a href="/login" class="menuItem">Login</a>
-				<a href="/createaccount" class="menuItem">Sign in</a>
+				<a href="/createaccount" class="menuItem">Sign up</a>
 			<% end %>
 	</div>
 	<%i = 0%>
