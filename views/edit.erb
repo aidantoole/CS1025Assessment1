@@ -44,12 +44,14 @@
 		<textarea rows="20" cols="90" name="message"><%= @info %></textarea>
 		<br><input type="submit" value="Update">
 	</form>
+	<%if $credentials%>
 	<% if $credentials[0] == "Admin" %>
 		<p><a href="/reset">Reset</a></p>				
 	<% end %>
 	<% if $credentials[0] == "Admin" %>
 		<p><a href="/backup">Backup</a></p>				
 	<% end %>
+	<%end%>
 	</div>
 
 

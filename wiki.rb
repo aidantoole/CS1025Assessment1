@@ -9,6 +9,7 @@ require 'sinatra'
 require 'sinatra/reloader'
 require 'fileutils'
 require 'data_mapper'
+require 'zip'
 
 DataMapper::setup(:default, "sqlite3://#{Dir.pwd}/wiki.db") 
 
@@ -26,7 +27,6 @@ DataMapper.finalize.auto_upgrade!
 $myinfo = "Aidan Toole"
 @info = ""
 
-FileUtils.cp("wiki.txt","wiki_copy.txt")
 
 def get_user_details()
 	@list2 = User.all :order => :id.desc
@@ -38,6 +38,7 @@ def get_user_details()
 		end
 	end
 end
+
 def readFile(filename)
 	info = ""
 	file = File.open(filename)
@@ -141,9 +142,16 @@ end
 put '/edit' do
 	info = "#{params[:message]}"
 	@info = info
+	
+	usr = get_user_details()
+	log_file = File.open("log.txt","a")
+	log_file.print usr.username," ", Time.now
+	log_file.puts ""
+	
 	file = File.open("wiki.txt", "w")
 	file.puts @info
 	file.close
+	log_file.close
 	redirect '/'
 end
 
@@ -181,7 +189,6 @@ end
 get '/noaccount' do
 	erb :noAccount
 end
-
 #User Stuff
 get '/user/:uzer' do
 	@Userz = User.first(:username => params[:uzer])
@@ -265,8 +272,21 @@ get '/reset' do
 end
 
 get '/backup' do
-	FileUtils.cp("wiki.txt","wiki_backup.txt")
-	redirect '/'
+	input_filenames = ['wiki.txt']
+	
+	zipfile_name = "wiki_backup.zip"
+	FileUtils.rm_rf(zipfile_name)
+	Zip::File.open(zipfile_name, Zip::File::CREATE) do |zipfile|
+	input_filenames.each do |filename|
+		# Two arguments:
+		# - The name of the file as it will appear in the archive
+		# - The original file, including the path to find it
+		zipfile.add(filename, File.join(filename))
+	end
+	
+	end
+
+redirect '/'
 end
 
 #404 Use case
