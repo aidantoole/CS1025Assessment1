@@ -264,6 +264,11 @@ get '/reset' do
 	redirect '/'
 end
 
+get '/backup' do
+	FileUtils.cp("wiki.txt","wiki_backup.txt")
+	redirect '/'
+end
+
 #404 Use case
 not_found do
 	status 404
