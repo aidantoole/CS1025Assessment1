@@ -176,7 +176,7 @@ get '/user/delete/:uzer' do
 	else
 		n.destroy
 		@list2 = User.all :order => :id.desc
-		erb :adminControls
+		redirect '/'
 	end
 end
 
