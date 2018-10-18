@@ -287,8 +287,22 @@ end
 get '/backup' do
 	input_filenames = ['wiki.txt']
 	
-	zipfile_name = "wiki_backup.zip"
-	FileUtils.rm_rf(zipfile_name)
+	zipfile_name = "wiki_backup_1.zip"
+
+	if File.exist?("wiki_backup_1.zip")
+		if File.exist?("wiki_backup_2.zip")
+			if File.exist?("wiki_backup_3.zip")
+				FileUtils.rm("wiki_backup_3.zip")
+				FileUtils.mv("wiki_backup_2.zip", "wiki_backup_3.zip")
+				FileUtils.mv("wiki_backup_1.zip", "wiki_backup_2.zip")
+			else 
+				FileUtils.mv("wiki_backup_2.zip", "wiki_backup_3.zip")
+				FileUtils.mv("wiki_backup_1.zip", "wiki_backup_2.zip")
+			end
+		else
+			FileUtils.mv("wiki_backup_1.zip", "wiki_backup_2.zip")
+		end
+	end
 	Zip::File.open(zipfile_name, Zip::File::CREATE) do |zipfile|
 	input_filenames.each do |filename|
 		# Two arguments:
