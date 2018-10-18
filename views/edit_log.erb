@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>login</title>
+	<title>Edit</title>
 </head>
 <body>
 	<link rel="stylesheet" type="text/css" href="css/style.css" />
@@ -21,37 +21,26 @@
 					<%= $credentials[0] %>
 				</b>
 				<a href="/logout" class="menuItem">Logout</a>
-				<a href="/edit" class="menuItem">Edit</a>
+
 				<% if $credentials[0] == "Admin" %>
 					<a href="/admincontrols" class="menuItem">Admin Controls</a>
-					<a href="/edit_log" class="menuItem">Edit Logs</a>
+                    <a href="/edit_log" class="menuItem">Edit Logs</a>
+                    <a href="/edit" class="menuItem">Edit</a>
 				<% end %> 
-				<%if get_user_details.edit == true%>
-					<a href="/edit" class="menuItem">Edit</a>
-				<%end%>
+
 				<% else %>
 					<a href="/login" class="menuItem">Login</a>
-					<a href="/createaccount" class="menuItem">Sign in</a>
 				<% end %>
 			<% else %>
 				<a href="/login" class="menuItem">Login</a>
-				<a href="/createaccount" class="menuItem">Sign up</a>
 			<% end %>
 	</div>
-
 	<div class="spacer">
 		&nbsp;
 	</div>
-	<div id="login_form">
-		<h2>Login</h2><br>
-		<form action="/login" method="post">
-		Username:<input type="text" name="username"><br>
-		Password: <input type="password" name="password"><br>
-		<input type="submit" value="Login!">
-		</form>
-		<p>Not have an account? <a href="/createaccount">Sign in</a></p> 
-	</div>
+	<div id="admin_controls">
+	<h2>Editing Logs</h2>
+        <%=@editLogs%>
+    <div>
 </body>
 </html>
-
-

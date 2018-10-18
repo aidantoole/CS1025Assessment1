@@ -155,6 +155,19 @@ put '/edit' do
 	redirect '/'
 end
 
+get '/edit_log' do
+editLogs = ""
+file = File.open("log.txt")
+file.each do |line|
+	editLogs = editLogs + line + '<br>'
+	end
+
+file.close
+@editLogs = editLogs
+	erb :edit_log
+end
+
+
 #Login
 get '/login' do
 	erb :login

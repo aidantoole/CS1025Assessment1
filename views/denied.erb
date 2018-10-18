@@ -17,8 +17,9 @@
 		<% if $credentials %> 
 			<% if $credentials[0] != ' ' %>
 				Logged in as: 
-				<a href="/user/<%= $credentials[0] %>"><b style="color:black;">
-					<%= $credentials[0] %></b></a>
+				<b style="color:black;">
+					<%= $credentials[0] %>
+				</b>
 				<a href="/logout" class="menuItem">Logout</a>
 
 				<% if $credentials[0] == "Admin" %>
